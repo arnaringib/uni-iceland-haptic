@@ -1,0 +1,22 @@
+#summary How to compile a H3DAPI project in Visual 2008
+#labels Compiling
+
+Create a New Project. Choose a project type as 'Win32 Console Application', type in a name for the project and press OK.
+
+In the Win32 Application Wizard->Overview click on a Next button, in the Application type make sure that 'Console Application' is selected and Additional options has 'Empty project', click on the Finish button.
+
+Before compiling you need to include a few header files and a few libraries. So go to Tools->Options, and click the plus next to 'Project and Solutions' and select 'VC++ Directories'. In the drop down box show directories for: choose 'Include Files' and add the following directories(C:\H3D is the default select your own directory if you need to):
+C:\H3D\External\include
+C:\H3D\H3DUtil\include
+C:\H3D\HAPI\include
+C:\H3D\H3DAPI\include
+Next select 'Library Files' in Show Directories for, and add the following directories:
+C:\H3D\lib
+C:\H3D\External\lib
+Click on OK.
+
+Next go to Project->Properties. In the Configuration drop down box make sure 'All configuration' is selected. Then click on the plus next to Configuration Properties, then click on the plus next to Linker and select 'Input'. In Additional Dependencies add this string: opengl32.lib glut32.lib glu32.lib H3DAPI_vc9.lib H3Dutil_vc9.lib HAPI_vc9.lib (VC9 is for Visual 2008)
+Click on OK, and start coding.
+
+Attention: This may no work for everyone, so if you get a error with including a header file, you can usually find them in the H3D directory. You can just search for the file and add the directory they are in, to the 'Include Files' as was shown above.
+And the same can be done to a linker problem as to the header files.
