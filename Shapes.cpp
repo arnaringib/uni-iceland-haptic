@@ -25,7 +25,7 @@ void Shapes::setTranslation(const Vec3f &translation){
 }
 
 
-void Shapes::setColor(const float &red, const float &green, const float &blue){
+void Shapes::setDiffuseColor(const float &red, const float &green, const float &blue){
 	material->diffuseColor->setValue(RGB(red,green,blue));
 }
 
@@ -40,4 +40,16 @@ void Shapes::setSurface(const float &stiffness, const float &damping, const floa
 	surface->staticFriction->setValue(staticf);
 	surface->snapDistance->setValue(snap);
 	appearance->surface->setValue(surface);
+}
+
+void Shapes::setTransparency(const float &transparency){
+	material->transparency->setValue(transparency);
+}
+
+void Shapes::setSpecularColor(const float &red, const float &green, const float &blue){
+	material->specularColor->setValue(RGB(red,green,blue));
+}
+
+void Shapes::setShininess(const float &shininess){
+	material->shininess->setValue(shininess);
 }

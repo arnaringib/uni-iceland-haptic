@@ -31,11 +31,11 @@ public:
 	//		   hnit miğağ viğ (0,0,0).
 	void setTranslation(const Vec3f &translation);
 	
-	// Notkun: shapes->setColor(red,green,blue);
+	// Notkun: shapes->setDiffuseColor(red,green,blue);
 	// Fyrir:  shapes er bendir á Shapes hlut, 
 	//		   red, green og blue eru float.
-	// Eftir:  shapes er teiknağ í (red,green,blue) lit. 
-	void setColor(const float &red, const float &green, const float &blue);
+	// Eftir:  shapes er teiknağ í (red,green,blue) dreifğum lit. 
+	void setDiffuseColor(const float &red, const float &green, const float &blue);
 
 	// Notkun: shapes->setRotation(axis,angle);
 	// Fyrir:  shapes er bendir á Shapes hlut, 
@@ -51,6 +51,23 @@ public:
 	//		   snap er lengd frá hlutnum sem ağdráttur á ağ virka.
 	void setSurface(const float &stiffness, const float &damping, const float &staticf, const float &dynamicf, const float &snap);
 
+	// Notkun: shapes->setTransparency(transparency);
+	// Fyrir:  shapes er bendir á Shapes hlut, 
+	//		   transparency er float.
+	// Eftir:  shapes er transparency gegnumsætt
+	void setTransparency(const float &transparency);
+
+	// Notkun: shapes->setSpecularColor(red,green,blue);
+	// Fyrir:  shapes er bendir á Shapes hlut, 
+	//		   red, green og blue eru float.
+	// Eftir:  shapes er teiknağ í (red,green,blue) endurkastanlegum lit. 
+	void setSpecularColor(const float &red, const float &green, const float &blue);
+
+	// Notkun: shapes->setShininess(shininess);
+	// Fyrir:  shapes er bendir á Shapes hlut, 
+	//		   shininess float.
+	// Eftir:  shapes er teiknağ meğ shininess glansa. 
+	void setShininess(const float &shininess);
 
 	// Notkun: shapes->setSolid(solid);
 	// Fyrir:  shapes er bendir á Shapes hlut, solid er bool.
