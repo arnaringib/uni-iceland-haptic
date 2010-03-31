@@ -12,7 +12,8 @@
 #include <H3D/Appearance.h>
 #include <H3D/Material.h>
 #include <H3D/Transform.h>
-#include <H3D/MagneticSurface.h>
+//#include <H3D/MagneticSurface.h>
+#include <H3D/SmoothSurface.h>
 #include <H3DUtil/Rotation.h>
 
 using namespace std;
@@ -49,7 +50,10 @@ public:
 	// Eftir:  Flöturinn er með þéttleikan stiffness, damping í mjúkleika,
 	//		   núningurinn er staticf, hreyfinúningurinn er dynamicf og 
 	//		   snap er lengd frá hlutnum sem aðdráttur á að virka.
-	void setSurface(const float &stiffness, const float &damping, const float &staticf, const float &dynamicf, const float &snap);
+	//void setSurface(const float &stiffness, const float &damping, const float &staticf, const float &dynamicf, const float &snap);
+
+
+	void setSurface(const float &stiffness, const float &damping);
 
 	// Notkun: shapes->setTransparency(transparency);
 	// Fyrir:  shapes er bendir á Shapes hlut, 
@@ -85,7 +89,8 @@ protected:
 	Shape *shape;
 	Appearance *appearance;
 	Material *material;
-	MagneticSurface *surface;
+	//MagneticSurface *surface;
+	SmoothSurface *surface;
 };
 
 #endif

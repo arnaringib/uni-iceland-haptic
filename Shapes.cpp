@@ -9,7 +9,8 @@ Shapes::Shapes(){
 	shape = new Shape;
 	appearance = new Appearance;
 	material = new Material;
-	surface = new MagneticSurface;
+	surface = new SmoothSurface;
+	//surface = new MagneticSurface;
 }
 
 Shapes::~Shapes(){
@@ -33,12 +34,13 @@ void Shapes::setRotation(const Vec3f &axis, const float &angle){
 	transform->rotation->setValue(Rotation(axis,angle));
 }
 
-void Shapes::setSurface(const float &stiffness, const float &damping, const float &staticf, const float &dynamicf, const float &snap){
+//void Shapes::setSurface(const float &stiffness, const float &damping, const float &staticf, const float &dynamicf, const float &snap){
+void Shapes::setSurface(const float &stiffness, const float &damping){
 	surface->stiffness->setValue(stiffness);
 	surface->damping->setValue(damping);
-	surface->dynamicFriction->setValue(dynamicf);
-	surface->staticFriction->setValue(staticf);
-	surface->snapDistance->setValue(snap);
+	//surface->dynamicFriction->setValue(dynamicf);
+	//surface->staticFriction->setValue(staticf);
+	//surface->snapDistance->setValue(snap);
 	appearance->surface->setValue(surface);
 }
 
