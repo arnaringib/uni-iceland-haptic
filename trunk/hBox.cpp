@@ -25,6 +25,15 @@ Node* hBox::getNode(void){
 	appearance->material->setValue(material);
 	shape->geometry->setValue(box);
 	transform->children->push_back(shape);
+	
+	resultNode->children->push_back(transform);
 
-	return transform;
+	if(enableMagnetic)
+	{
+		magnetic->geometry->setValue(box);
+
+		resultNode->children->push_back(magnetic);
+	}
+
+	return resultNode;
 }

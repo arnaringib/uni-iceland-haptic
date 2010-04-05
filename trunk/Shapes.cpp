@@ -9,8 +9,10 @@ Shapes::Shapes(){
 	shape = new Shape;
 	appearance = new Appearance;
 	material = new Material;
-	surface = new SmoothSurface;
-	//surface = new MagneticSurface;
+	surface = new H3DFrictionalSurfaceNode;
+	magnetic = new MagneticGeometryEffect;
+	resultNode = new Group;
+	enableMagnetic = false;
 }
 
 Shapes::~Shapes(){
@@ -19,6 +21,8 @@ Shapes::~Shapes(){
 	delete appearance;
 	delete material;
 	delete surface;
+	delete magnetic;
+	delete resultNode;
 }
 
 void Shapes::setTranslation(const Vec3f &translation){
@@ -34,14 +38,20 @@ void Shapes::setRotation(const Vec3f &axis, const float &angle){
 	transform->rotation->setValue(Rotation(axis,angle));
 }
 
-//void Shapes::setSurface(const float &stiffness, const float &damping, const float &staticf, const float &dynamicf, const float &snap){
-void Shapes::setSurface(const float &stiffness, const float &damping){
+void Shapes::setSurface(const float &stiffness, const float &damping, const float &staticf, const float &dynamicf){
 	surface->stiffness->setValue(stiffness);
 	surface->damping->setValue(damping);
-	//surface->dynamicFriction->setValue(dynamicf);
-	//surface->staticFriction->setValue(staticf);
-	//surface->snapDistance->setValue(snap);
+	surface->dynamicFriction->setValue(dynamicf);
+	surface->staticFriction->setValue(staticf);
 	appearance->surface->setValue(surface);
+}
+
+void Shapes::setMagnetic(const float &startDistance, const float &escapeDistance, const float &springConstant){
+	enableMagnetic = true;
+	magnetic->enabled->setValue(true);
+	magnetic->startDistance->setValue(startDistance);
+	magnetic->escapeDistance->setValue(escapeDistance);
+	magnetic->springConstant->setValue(springConstant);
 }
 
 void Shapes::setTransparency(const float &transparency){

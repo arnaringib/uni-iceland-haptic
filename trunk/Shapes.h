@@ -12,8 +12,8 @@
 #include <H3D/Appearance.h>
 #include <H3D/Material.h>
 #include <H3D/Transform.h>
-//#include <H3D/MagneticSurface.h>
-#include <H3D/SmoothSurface.h>
+#include <H3D/MagneticGeometryEffect.h>
+#include <H3D/H3DFrictionalSurfaceNode.h>
 #include <H3DUtil/Rotation.h>
 
 using namespace std;
@@ -44,16 +44,12 @@ public:
 	// Eftir:  shapes er snúið við á axis og í angle gráður.
 	void setRotation(const Vec3f &axis, const float &angle);
 
-	// Notkun: shapes->setSurface(stiffness, damping, staticf, dynamicf, snap);
+	// Notkun: shapes->setSurface(stiffness, damping, staticf, dynamicf);
 	// Fyrir:  shapes er bendir á Shapes hlut,
-	//		   stiffness, damping, staticf, dynamicf og snap eru float.
+	//		   stiffness, damping, staticf og dynamicf eru float.
 	// Eftir:  Flöturinn er með þéttleikan stiffness, damping í mjúkleika,
-	//		   núningurinn er staticf, hreyfinúningurinn er dynamicf og 
-	//		   snap er lengd frá hlutnum sem aðdráttur á að virka.
-	//void setSurface(const float &stiffness, const float &damping, const float &staticf, const float &dynamicf, const float &snap);
-
-
-	void setSurface(const float &stiffness, const float &damping);
+	//		   núningurinn er staticf og hreyfinúningurinn er dynamicf.
+	void setSurface(const float &stiffness, const float &damping, const float &staticf, const float &dynamicf);
 
 	// Notkun: shapes->setTransparency(transparency);
 	// Fyrir:  shapes er bendir á Shapes hlut, 
@@ -73,6 +69,16 @@ public:
 	// Eftir:  shapes er teiknað með shininess glansa. 
 	void setShininess(const float &shininess);
 
+	// Notkun: shapes->setMagnetic(startDistance, escapeDistance, springConstant);
+	// Fyrir:  shapes er bendir á Shapes hlut, 
+	//		   startDistance, escapeDistance
+	//		   og springConstant eru float.
+	// Eftir:  shapes startDistance er sú lengd sem segulkrafturinn 
+	//		   byrjar að toga að sér, escapeDistance er sú lengd
+	//		   sem segulkraturinn hættir að hafa áhrif, springConstant
+	//		   er hversu mikið á að toga að hlutinum.
+	void setMagnetic(const float &startDistance, const float &escapeDistance, const float &springConstant);
+
 	// Notkun: shapes->setSolid(solid);
 	// Fyrir:  shapes er bendir á Shapes hlut, solid er bool.
 	// Eftir:  shapes er teiknað báðum megin ef og 
@@ -89,8 +95,10 @@ protected:
 	Shape *shape;
 	Appearance *appearance;
 	Material *material;
-	//MagneticSurface *surface;
-	SmoothSurface *surface;
+	MagneticGeometryEffect *magnetic;
+	H3DFrictionalSurfaceNode *surface;
+	Group *resultNode;
+	bool enableMagnetic;
 };
 
 #endif
