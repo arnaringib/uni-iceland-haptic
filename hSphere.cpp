@@ -26,5 +26,14 @@ Node* hSphere::getNode(void){
 	shape->geometry->setValue(sphere);
 	transform->children->push_back(shape);
 
-	return transform;
+	resultNode->children->push_back(transform);
+
+	if(enableMagnetic)
+	{
+		magnetic->geometry->setValue(sphere);
+
+		resultNode->children->push_back(magnetic);
+	}
+
+	return resultNode;
 }
