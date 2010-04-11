@@ -4,10 +4,9 @@ using namespace std;
 using namespace H3D;
 
 HapticDevice::HapticDevice(){
-	//deviceinfo_file = "hapticdevice_info";
 	enable = false;
 	lastErrorMsg = "";
-	deviceinfo_file = "<DeviceInfo>"
+	deviceinfo_string = "<DeviceInfo>"
 	"<AnyDevice positionCalibration=\"1 0 0 0"
 	"								 0 1 0 0"
 	"				   				0 0 1 0"
@@ -30,13 +29,11 @@ HapticDevice::~HapticDevice(){
 	
 void HapticDevice::setupDevice(){
 	if (!DeviceInfo::getActive()){
-		if( deviceinfo_file.size() > 0){
-			try{
-				deviceSetup = X3D::createX3DNodeFromString( deviceinfo_file );
-			}
-			catch( const Exception::H3DException &e ) {
-				lastErrorMsg = e.message;
-			}
+		try{
+			deviceSetup = X3D::createX3DNodeFromString( deviceinfo_string );
+		}
+		catch( const Exception::H3DException &e ) {
+			lastErrorMsg = e.message;
 		}
 	}
 	di = DeviceInfo::getActive();
