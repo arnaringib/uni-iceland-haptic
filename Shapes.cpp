@@ -9,7 +9,8 @@ Shapes::Shapes(){
 	shape = new Shape;
 	appearance = new Appearance;
 	material = new Material;
-	surface = new H3DFrictionalSurfaceNode;
+	surface = new SmoothSurface;
+	//surface = new H3DFrictionalSurfaceNode;
 	magnetic = new MagneticGeometryEffect;
 	resultNode = new Group;
 	enableMagnetic = false;
@@ -41,8 +42,8 @@ void Shapes::setRotation(const Vec3f &axis, const float &angle){
 void Shapes::setSurface(const float &stiffness, const float &damping, const float &staticf, const float &dynamicf){
 	surface->stiffness->setValue(stiffness);
 	surface->damping->setValue(damping);
-	surface->dynamicFriction->setValue(dynamicf);
-	surface->staticFriction->setValue(staticf);
+	//surface->dynamicFriction->setValue(dynamicf);
+	//surface->staticFriction->setValue(staticf);
 	appearance->surface->setValue(surface);
 }
 
