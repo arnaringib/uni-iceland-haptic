@@ -34,6 +34,7 @@ Node* hBox::getNode(void){
 
 		resultNode->children->push_back(magnetic);
 	}
-
+	
+	
 	return resultNode;
 }
