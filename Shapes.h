@@ -13,8 +13,7 @@
 #include <H3D/Material.h>
 #include <H3D/Transform.h>
 #include <H3D/MagneticGeometryEffect.h>
-#include <H3D/SmoothSurface.h>
-#include <H3D/H3DFrictionalSurfaceNode.h>
+#include <H3D/FrictionalSurface.h>
 #include <H3DUtil/Rotation.h>
 
 using namespace std;
@@ -97,8 +96,7 @@ protected:
 	Appearance *appearance;
 	Material *material;
 	MagneticGeometryEffect *magnetic;
-	SmoothSurface *surface;
-	//H3DFrictionalSurfaceNode *surface;
+	FrictionalSurface *surface;
 	Group *resultNode;
 	bool enableMagnetic;
 };
