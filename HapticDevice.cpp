@@ -8,9 +8,9 @@ HapticDevice::HapticDevice(){
 	lastErrorMsg = "";
 	deviceinfo_string = "<DeviceInfo>"
 	"<AnyDevice positionCalibration=\"1 0 0 0"
-	"								 0 1 0 0"
-	"				   				0 0 1 0"
-	"								0 0 0 1\" >"
+	" 0 1 0 0"
+	" 0 0 1 0"
+	" 0 0 0 1\" >"
 	"	<Shape containerField=\"stylus\">"
 	"		<Appearance>"
 	"			<Material/>"
@@ -29,18 +29,26 @@ HapticDevice::~HapticDevice(){
 	
 void HapticDevice::setupDevice(){
 	if (!DeviceInfo::getActive()){
+		cout << "Hello" << endl;
 		try{
-			deviceSetup = X3D::createX3DNodeFromString( deviceinfo_string );
+			if(deviceinfo_string.size() > 0 ){
+				deviceSetup = X3D::createX3DNodeFromString( deviceinfo_string );
+			}
 		}
 		catch( const Exception::H3DException &e ) {
 			lastErrorMsg = e.message;
 		}
 	}
-	di = DeviceInfo::getActive();
-	hdev = NULL;
+	try{
+		di = DeviceInfo::getActive();
+		hdev = NULL;
 
-	if(di && di->device->size() > 0){
-		hdev = di->device->getValueByIndex(0);
+		if(di && di->device->size() > 0){
+			hdev = di->device->getValueByIndex(0);
+		}
+	}
+	catch( const Exception::H3DException &e){
+		lastErrorMsg = lastErrorMsg + " " + e.message;
 	}
 }
 

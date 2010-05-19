@@ -6,8 +6,9 @@
 #include "hBox.h"
 #include "hCone.h"
 #include "hCylinder.h"
+#include "Shapes.h"
 
-class hScenes
+class hScenes  
 {
 public:
 	hScenes();
@@ -41,6 +42,7 @@ public:
 	//		   node er Node hlutur.
 	// Eftir:  node inniheldur senuna.
 	Node* getScene();
+
 
 	static const int SPHERE = 0;
 	static const int BOX = 1;
