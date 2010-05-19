@@ -9,6 +9,10 @@ hScenes::hScenes(){
 	size = 0.06f;
 }
 
+hScenes::~hScenes(){
+	delete group;
+}
+
 void hScenes::shape(const int &nr){
 	selected = nr;
 	if(selected == SPHERE){
@@ -19,6 +23,7 @@ void hScenes::shape(const int &nr){
 		hsphere->setSurface(0.5f,0.0f,0.6f,0.0f);
 		
 		item = hsphere;
+		
 	}
 	else if(selected == BOX){
 		hBox *hbox = new hBox();
@@ -114,3 +119,6 @@ Node* hScenes::getScene(){
 	group->children->push_back(item->getNode());
 	return group;
 }
+
+
+
