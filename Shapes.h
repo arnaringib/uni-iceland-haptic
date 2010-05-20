@@ -91,11 +91,6 @@ public:
 	// Eftir:  node inniheldur shapes hnút.
 	virtual Node* getNode(void)=0;
 
-	// Notkun: field = shapes->getField();
-	// Fyrir:  shapes er bendir á Shapes hlut,
-	//		   field er field hlutur.
-	// Eftir:  field inniheldur shapes hnút.
-	//virtual Field* getField(void)=0;
 protected:
 	Transform *transform;
 	Shape *shape;
