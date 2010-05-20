@@ -20,7 +20,7 @@ Click on OK, and start coding.
 Notice: Run in Release mode - not debug mode!
 
 To use the UI-library with H3D:
-Download the UI and follow the directions on http://www.h3dapi.org/modules/mediawiki/index.php?title=UI&style=x
+Download the UI and follow the directions on http://www.h3dapi.org/modules/mediawiki/index.php/UI
 Copy the lib and dll files you get from building the INSTALL project. Put UI_vc9.lib in C:\H3D\lib, and UI_vc9.dll in C:\H3D\bin. Copy the folder UI from UI-2.0-Source\UI\include\H3D and paste it into C:\H3D\H3DAPI\include\H3D. Copy the source files from UI-2.0-Source\UI\src into C:\H3D\H3DAPI\src. Remember to also link to these files! Add UI_vc9.lib in Project->Properties....->Linker->Input 
 
 Attention: This may no work for everyone, so if you get a error with including a header file, you can usually find them in the H3D directory. You can just search for the file and add the directory they are in, to the 'Include Files' as was shown above.
